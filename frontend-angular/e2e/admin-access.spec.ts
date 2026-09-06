@@ -13,7 +13,7 @@ test.describe('Admin access', () => {
     await login(page, 'admin@example.com');
 
     await page.goto('/admin');
-    await expect(page.getByRole('heading', { name: 'Projects Administration' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Rost Administration' })).toBeVisible();
     await expect(page).toHaveURL(/\/admin$/);
 
     // A nested admin route is reachable too (guard lets the admin through).
@@ -30,6 +30,6 @@ test.describe('Admin access', () => {
     // adminGuard redirects authenticated non-admins home. Not to a project list:
     // that now needs a workspace id the guard has no business resolving.
     await expect(page).toHaveURL(/\/w\/[0-9a-f-]+$/);
-    await expect(page.getByRole('heading', { name: 'Projects Administration' })).toHaveCount(0);
+    await expect(page.getByRole('heading', { name: 'Rost Administration' })).toHaveCount(0);
   });
 });

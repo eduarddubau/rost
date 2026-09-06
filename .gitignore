@@ -541,7 +541,7 @@ Thumbs.db
 
 
 # Claude Code project config (unpublished for now)
-# No trailing slash: .claude is a symlink to ../fullstack-app-notes, and git
+# No trailing slash: .claude is a symlink into ../llm-rulebase, and git
 # sees a symlink as a file, so a directory-only pattern wouldn't match it.
 .claude
 

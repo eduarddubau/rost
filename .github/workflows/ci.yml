@@ -47,7 +47,7 @@ jobs:
       # stage in the job UI instead of surfacing as one opaque red block.
       - name: Restore
         run: |
-          dotnet restore fullstack-app.sln
+          dotnet restore rost.sln
           dotnet tool restore
 
       - name: Check formatting
@@ -57,19 +57,19 @@ jobs:
       # locally so they don't block a work-in-progress build, and errors here.
       # Mirrors the frontend job's `lint --max-warnings=0`.
       - name: Build
-        run: dotnet build fullstack-app.sln --configuration Release --no-restore -warnaserror
+        run: dotnet build rost.sln --configuration Release --no-restore -warnaserror
 
       # backend.Tests is entirely EF InMemory — no UseNpgsql anywhere — so this
       # job needs no database service. --solution, not a bare path: global.json
       # selects Microsoft.Testing.Platform mode, where positional targets are gone.
       - name: Test
-        run: dotnet test --solution fullstack-app.sln --configuration Release --no-build
+        run: dotnet test --solution rost.sln --configuration Release --no-build
 
       # `dotnet list` exits 0 even when it reports a High advisory, so the text
       # is the gate, not the exit code.
       - name: Audit dependencies
         run: |
-          dotnet list fullstack-app.sln package --vulnerable --include-transitive | tee audit.log
+          dotnet list rost.sln package --vulnerable --include-transitive | tee audit.log
           if grep -q 'has the following vulnerable packages' audit.log; then
             echo "::error::Vulnerable NuGet packages found"
             exit 1
@@ -157,8 +157,8 @@ jobs:
       ASPNETCORE_ENVIRONMENT: Development
       # HS512 requires at least 64 characters.
       Jwt__Key: ci-only-signing-key-not-a-secret-padded-to-the-required-length-0000
-      Jwt__Issuer: fullstack-app
-      Jwt__Audience: fullstack-app
+      Jwt__Issuer: rost
+      Jwt__Audience: rost
       Jwt__DurationInMinutes: 15
 
     steps:
@@ -189,7 +189,7 @@ jobs:
         run: npx playwright install --with-deps chromium
 
       - name: Build API
-        run: dotnet build fullstack-app.sln --configuration Release
+        run: dotnet build rost.sln --configuration Release
 
       # Migrates and seeds on startup. Backgrounded, with output kept so a
       # failure to boot can be read in the artifact rather than guessed at.

@@ -17,7 +17,7 @@
         "ASPNETCORE_URLS": "http://0.0.0.0:8080"
       },
       "sourceFileMap": {
-        "/workspaces/fullstack-app": "${workspaceFolder}"
+        "/workspaces/rost": "${workspaceFolder}"
       },
       "symbolOptions": {
         "searchPaths": ["/tmp/build/bin/Debug/net10.0"],
@@ -38,7 +38,7 @@
       "processId": "${command:pickProcess}",
       "justMyCode": false,
       "sourceFileMap": {
-        "/workspaces/fullstack-app": "${workspaceFolder}"
+        "/workspaces/rost": "${workspaceFolder}"
       },
       "symbolOptions": {
         "searchPaths": ["/tmp/build/bin/Debug/net10.0"],

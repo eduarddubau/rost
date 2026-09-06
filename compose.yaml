@@ -1,8 +1,8 @@
 # VS Code Dev Containers derives the compose project name from the folder with
-# non-alphanumerics stripped ("fullstack-app" -> "fullstackapp") and passes it as
+# non-alphanumerics stripped ("rost" -> "rost") and passes it as
 # --project-name. Pin the same name here so CLI and extension drive one stack;
 # otherwise each builds its own pod and they collide over the container_names.
-name: fullstackapp
+name: rost
 
 services:
   api:
@@ -13,16 +13,16 @@ services:
       target: build
     container_name: dotnet-api
     volumes:
-      - .:/workspaces/fullstack-app:z
-      - ./backend:/workspaces/fullstack-app/backend:z
+      - .:/workspaces/rost:z
+      - ./backend:/workspaces/rost/backend:z
       # Read-only view of the frontend deps so the dev container's TS/Angular
       # language service can resolve them; nothing here is ever executed.
-      - angular_node_modules:/workspaces/fullstack-app/frontend-angular/node_modules:ro
+      - angular_node_modules:/workspaces/rost/frontend-angular/node_modules:ro
       - ~/dotnet_docker_cache/home:/tmp/dotnet_home:z
       - ~/dotnet_docker_cache/nuget:/tmp/nuget_cache:z
     tmpfs:
       - /tmp/build:mode=777,exec
-    working_dir: /workspaces/fullstack-app/backend
+    working_dir: /workspaces/rost/backend
     ports:
       # Safe only while TrustedProxyNetworks names the proxy's single address: a request
       # arriving here comes from another IP, so its X-Forwarded-For is ignored. Widen that
@@ -76,13 +76,13 @@ services:
   frontend:
     image: node:24-alpine
     container_name: angular-frontend
-    working_dir: /workspaces/fullstack-app/frontend-angular
+    working_dir: /workspaces/rost/frontend-angular
     volumes:
-      - ./frontend-angular:/workspaces/fullstack-app/frontend-angular:z
-      - angular_node_modules:/workspaces/fullstack-app/frontend-angular/node_modules
+      - ./frontend-angular:/workspaces/rost/frontend-angular:z
+      - angular_node_modules:/workspaces/rost/frontend-angular/node_modules
       # Without this Prettier finds no config and silently uses defaults. One
       # file, read-only: npm install runs package scripts as root in here.
-      - ./.prettierrc:/workspaces/fullstack-app/.prettierrc:ro,z
+      - ./.prettierrc:/workspaces/rost/.prettierrc:ro,z
     ports:
       # Loopback because this skips nginx: X-Forwarded-Host here is whatever the caller
       # sends. 4000 is absent on purpose, ng serve puts hybrid SSR on 4200 and nothing

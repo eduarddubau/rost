@@ -103,13 +103,13 @@ describe('AdminDashboardComponent', () => {
     expect(greeting?.querySelector('a')?.getAttribute('href')).toBe('/profile');
   });
 
-  // "Projects" alone would read as the tenant-content page that was deleted, and an
+  // The bare app name would read as the tenant-content page that was deleted, and an
   // environment inside the <h1> would land in the heading's accessible name.
   it('names the instance it administers, with the environment beside the heading', async () => {
     await setup();
     await respond(dashboard());
 
-    expect(element().querySelector('h1')?.textContent?.trim()).toBe('Projects Administration');
+    expect(element().querySelector('h1')?.textContent?.trim()).toBe('Rost Administration');
     expect(element().querySelector('.env-chip')?.textContent).toContain('Development');
   });
 

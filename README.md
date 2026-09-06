@@ -1,4 +1,4 @@
-<h1 align="center">Projects</h1>
+<h1 align="center">Rost</h1>
 
 <p align="center">
   <strong>Workspaces, projects, and a kanban board — built to production standards rather than to a tutorial's.</strong><br>
@@ -65,7 +65,7 @@ the app treats it as one.
 Requires Docker or Podman with Compose. No local .NET or Node install is needed.
 
 ```bash
-git clone <this repo> && cd fullstack-app
+git clone <this repo> && cd rost
 cp .env.example .env      # then fill in the blanks — see below
 docker compose up -d      # or: podman compose up -d
 ```
@@ -362,7 +362,7 @@ light. Violet is the accent a new account gets.
 
 <p align="center">
   <img src="docs/admin-dashboard.webp" width="900"
-       alt="The admin dashboard in dark theme with the violet accent: a greeting for Admin beside the local weather, the heading Projects Administration with a DEVELOPMENT badge, a band reading 4 users, 1 shared workspace, 8 projects and 8 tasks, a Needs attention queue holding 9 projects past the window, recent signups, and a strip stating that projects are purgeable 30 days after deletion.">
+       alt="The admin dashboard in dark theme with the violet accent: a greeting for Admin beside the local weather, the heading Rost Administration with a DEVELOPMENT badge, a band reading 4 users, 1 shared workspace, 8 projects and 8 tasks, a Needs attention queue holding 9 projects past the window, recent signups, and a strip stating that projects are purgeable 30 days after deletion.">
 </p>
 
 An administrator administers, and holds no projects or workspaces of their own — enforced by an
