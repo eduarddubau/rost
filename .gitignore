@@ -547,3 +547,6 @@ Thumbs.db
 
 # Serilog file sink
 backend/logs/
+
+# Obsidian vault config, if this folder is ever opened as a vault.
+.obsidian/
